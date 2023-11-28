@@ -1,0 +1,92 @@
+{
+    "info": {
+        "_postman_id": "",
+        "name": "TinderDog API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Obtener un Perro Aleatorio",
+            "request": {
+                "method": "GET",
+                "url": "http://localhost:8000/api/perros/random"
+            }
+        },
+        {
+            "name": "Crear Interacción para un Perro Específico",
+            "request": {
+                "method": "POST",
+                "url": "http://localhost:8000/api/interacciones",
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"perro_interesado_id\": 1, \"perro_candidato_id\": 2, \"preferencia\": \"aceptado\"}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Obtener Perros Candidatos",
+            "request": {
+                "method": "GET",
+                "url": "http://localhost:8000/api/perros/candidatos?perro_id=1"
+            }
+        },
+        {
+            "name": "Crear Perro",
+            "request": {
+                "method": "POST",
+                "url": "http://localhost:8000/api/perros",
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"nombre\": \"Luna\", \"url_foto\": \"http://ejemplo.com/luna.jpg\", \"descripcion\": \"Una perrita muy cariñosa y juguetona.\"}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Ver Perros Aceptados",
+            "request": {
+                "method": "GET",
+                "url": "http://localhost:8000/api/perros/{perro_id}/aceptados"
+            }
+        },
+        {
+            "name": "Ver Perros Rechazados",
+            "request": {
+                "method": "GET",
+                "url": "http://localhost:8000/api/perros/{perro_id}/rechazados"
+            }
+        },
+        {
+            "name": "Actualizar Información de un Perro",
+            "request": {
+                "method": "PUT",
+                "url": "http://localhost:8000/api/perros/{perro_id}",
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"nombre\": \"Actualizado\", \"url_foto\": \"http://ejemplo.com/actualizado.jpg\", \"descripcion\": \"Descripción actualizada.\"}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                }
+            }
+        },
+        {
+            "name": "Eliminar un Perro (Soft Delete)",
+            "request": {
+                "method": "DELETE",
+                "url": "http://localhost:8000/api/perros/{perro_id}"
+            }
+        }
+    ]
+}
