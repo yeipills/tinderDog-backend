@@ -1,5 +1,9 @@
 # TinderDog
 
+    alunmos : Juan Pablo Rosas Martin
+              Diego Gutierrez Mella
+              Yerko Cisternas Torres
+              
   descripción del proyecto.
 
 ## Requisitos
