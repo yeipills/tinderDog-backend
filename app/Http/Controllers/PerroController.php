@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Perro;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Models\Interaccion;
 
 class PerroController extends Controller
 {
@@ -92,4 +93,36 @@ class PerroController extends Controller
         $candidatos = Perro::where('id', '!=', $perroInteresadoId)->get(['id', 'nombre', 'url_foto', 'descripcion']);
         return response()->json($candidatos);
     }
+
+    public function aceptar(Request $request)
+    {
+        $validatedData = $request->validate([
+            'perro_id' => 'required|exists:perros,id',
+        ]);
+
+        $interaccion = Interaccion::create([
+            'perro_id' => $validatedData['perro_id'],
+            'accion' => 'aceptado',
+            'fecha' => now(),
+        ]);
+
+        return response()->json(['message' => 'Perro aceptado', 'interaccion' => $interaccion], 200);
+    }
+
+    public function rechazar(Request $request)
+    {
+        $validatedData = $request->validate([
+            'perro_id' => 'required|exists:perros,id',
+        ]);
+
+        $interaccion = Interaccion::create([
+            'perro_id' => $validatedData['perro_id'],
+            'accion' => 'rechazado',
+            'fecha' => now(),
+        ]);
+
+        return response()->json(['message' => 'Perro rechazado', 'interaccion' => $interaccion], 200);
+    }
+
+    
 }

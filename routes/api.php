@@ -22,3 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('perros', PerroController::class);
 
+Route::post('/perros/aceptar', [PerroController::class, 'aceptar']);
+
+Route::post('/perros/rechazar', [PerroController::class, 'rechazar']);
